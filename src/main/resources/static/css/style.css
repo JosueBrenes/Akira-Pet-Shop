@@ -82,6 +82,8 @@ body {
     font-size: 2.5vh;
 }
 
+
+
 .profile-icon {
     background: none;
     border: none;
@@ -92,7 +94,7 @@ body {
     width: 3vh;
     height: 3vh;
     border-radius: 50%;
-    margin-left: 4vw;
+    margin-left: -1vw;
     position: relative;
     z-index: 9999;
 }
@@ -163,3 +165,53 @@ button {
 .navbar {
     animation: fadeIn 1s ease forwards;
 }
+
+.modal-content {
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+    border-bottom: none; 
+}
+
+.modal-title {
+    color: #343a40; 
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-menu {
+    border: none;
+}
+
+.dropdown-item {
+    color: #343a40; 
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: #f8f9fa; 
+}
+
+.list-group-item {
+    border: none; 
+}
+
+.list-group-item a {
+    color: #343a40; 
+    text-decoration: none; 
+}
+
+.list-group-item a:hover {
+    color: #007bff;
+}
+
