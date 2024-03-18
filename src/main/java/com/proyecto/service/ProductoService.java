@@ -22,5 +22,14 @@ public interface ProductoService {
     /* Se define la firma del metodo para eliminar un registro de 
     la tabla producto, considerando idProducto */
     public void delete(Producto producto);
+    
+    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
+    public List<Producto> consultaJPA(double precioInf, double precioSup);
+
+    //Lista de productos utilizando consultas con JPQL    
+    public List<Producto> metodoJPQL(double precioInf, double precioSup);
+
+    //Lista de productos utilizando consultas con SQL Nativo
+    public List<Producto> consultaSQL(double precioInf, double precioSup);
 
 }
