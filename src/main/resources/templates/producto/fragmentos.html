@@ -4,17 +4,29 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head th:replace="~{layout/plantilla :: head}">
         <title>TechShop</title>
+        <style>
+            /* Estilos personalizados */
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+        </style>
     </head>
     <body>
+
         <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">   
-                        <button 
-                            type="button" 
-                            class="btn btn-primary btn-block" 
-                            data-bs-toggle="modal" 
+                    <div class="col-md-3">
+                        <button
+                            type="button"
+                            class="btn btn-primary btn-block"
+                            data-bs-toggle="modal"
                             data-bs-target="#agregarProducto">
                             <i class="fas fa-plus"></i> Agregar
                         </button>
@@ -25,17 +37,18 @@
 
         <!-- 2 Fragmento para agregar producto, es la ventana modal -->
         <section th:fragment="agregarProducto">
-            <div id="agregarProducto" 
-                 class="modal fade" 
-                 tabindex="-1" 
-                 aria-labelledby="exampleModalLabel" 
-                 aria-hidden="true">
+            <div id="agregarProducto"
+                 class="modal fade"
+                 tabindex="-1"
+                 aria-labelledby="exampleModalLabel"
+                 aria-hidden="true"
+                 style="z-index: 9999;">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-primary text-white">
                             <h5 class="modal-title">Agregar</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div> 
+                        </div>
                         <form th:action="@{/producto/guardar}" th:object="${producto}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
@@ -74,64 +87,39 @@
             </div>
         </section>
 
-
-        <!-- 3 Sección principal para mostrar la informacion de la entidad producto -->
         <section th:fragment="listadoProductos" id="productos">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Listado</h4>
-                            </div>
-                            <div th:if="${productos != null and !productos.empty}">
-                                <table class="table table-striped table-hover">
-                                    <thead class="table-dark">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Descripcion</th>
-                                            <th>Detalle</th>
-                                            <th>Precio</th>
-                                            <th>Existencias</th>
-                                            <th>Activo</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="producto, contador : ${productos}">
-                                            <td>[[${contador.count}]]</td>
-                                            <td>[[${producto.descripcion}]]</td>
-                                            <td>[[${producto.detalle}]]</td>
-                                            <td>[[${producto.precio}]]</td>
-                                            <td>[[${producto.existencias}]]</td>
-                                            <td th:text="${producto.activo} ? 'Activa' : 'Inactiva'" />
-                                            <td>
-                                                <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
-                                                   class="btn btn-danger">
-                                                    <i class="fas fa-trash"></i> Eliminar
-                                                </a>
-                                                <a th:href="@{/producto/modificar/}+${producto.idProducto}"
-                                                   class="btn btn-primary">
-                                                    <i class="fas fa-pencil"></i> Actualizar
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="text-center p-2" th:if="${productos == null or productos.empty}">
-                                <span>[[#{lista.vacia}]]</span>
+                    <div class="col-md-4" th:each="producto : ${productos}">
+                        <div class="card mb-3 bg-secondary">
+                            <div class="card-body text-white">
+                                <h5 class="card-title">[[${producto.descripcion}]]</h5>
+                                <p class="card-text">Detalle: [[${producto.detalle}]]</p>
+                                <p class="card-text">Precio: [[${producto.precio}]]</p>
+                                <p class="card-text">Existencias: [[${producto.existencias}]]</p>
+                                <div class="text-center mt-3">
+                                    <div class="btn-group" role="group">
+                                        <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                                           class="btn btn-danger mr-2">
+                                            <i class="fas fa-trash"></i> Eliminar
+                                        </a>
+                                        <a th:href="@{/producto/modificar/}+${producto.idProducto}"
+                                           class="btn btn-primary ml-2">
+                                            <i class="fas fa-pencil"></i> Actualizar
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="card text-center bg-primary text-white mb-3">
-                            <div class="card-body">
-                                <h3>Total de Productos</h3>
-                                <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalProductos}]]</h4>
-                            </div>
-                        </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>Total de productos: <span th:text="${totalProductos}"></span></p>
                     </div>
+                </div>
+                <div class="text-center p-2" th:if="${productos == null or productos.empty}">
+                    <span>[[#{lista.vacia}]]</span>
                 </div>
             </div>
         </section>
@@ -226,6 +214,22 @@
                             <i class="fas fa-check"></i> Guardar
                         </button>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección para ver el listado de categorías -->
+        <section th:fragment="tabsCategorias">
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"> 
+                            <a class="nav-link active" href="/producto/listado">[[#{catalogo.todas}]]</a>
+                        </li>
+                        <li class="nav-item" th:each="c : ${categorias}"> 
+                            <a class="nav-link" th:href="@{/producto/listado/}+${c.idCategoria}">[[${c.descripcion}]]</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </section>

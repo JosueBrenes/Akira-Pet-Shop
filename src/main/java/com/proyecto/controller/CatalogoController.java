@@ -44,13 +44,6 @@ public class CatalogoController {
         return "catalogo/listado";
     }
 
-    @GetMapping("/listado2")
-    public String listado2(Model model) {
-        var lista = productoService.getProductos(false);
-        model.addAttribute("productos", lista);
-        return "/catalogo/listado2";
-    }
-
     @PostMapping("/query1")
     public String consultaJPA(
             @RequestParam("precioInf") double precioInf,
