@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>[[#{aplicacion.titulo}]]</title>
+    </head>
+    <body>
+        <!-- Sección para ver el listado de productos -->
+        <section th:fragment="listadoProductos">
+            <div class="container">
+                <div class="row mt-4">
+                    <div class="col-lg-4 mb-4" th:each="p : ${productos}">
+                        <div class="card h-100">
+                            <img class="card-img-top img-fluid" th:src="${p.rutaImagen}" alt="Producto">
+                                <div class="card-body">
+                                    <h5 class="card-title">[[${p.descripcion}]]</h5>
+                                    <p class="card-text">[[${p.detalle}]]</p>
+                                </div>
+                                <div class="card-footer">
+                                    <p class="mb-0">Precio: ¢[[${p.precio}]]</p>
+                                    <small class="text-muted">Existencias: [[${p.existencias}]]</small>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección para ver el listado de categorías -->
+        <section th:fragment="tabsCategorias">
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item"> 
+                            <a class="nav-link active" href="/catalogo/listado">[[#{catalogo.todas}]]</a>
+                        </li>
+                        <li class="nav-item" th:each="c : ${categorias}"> 
+                            <a class="nav-link" th:href="@{/catalogo/listado/}+${c.idCategoria}">[[${c.descripcion}]]</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
