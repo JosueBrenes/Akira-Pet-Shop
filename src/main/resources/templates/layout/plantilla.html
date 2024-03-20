@@ -16,12 +16,13 @@
         <header th:fragment="header" class="header">
             <nav class="navbar">
                 <div class="logo">
-                    <span>[[#{aplicacion.titulo}]]</span>
+                    <a href="/" style="color: #fff; font-weight: bold; text-decoration: none;">[[#{aplicacion.titulo}]]</a>
                 </div>
 
                 <ul class="nav-links">
                     <li><a th:href="@{/catalogo/listado}">[[#{navbar.catalogo}]]</a></li>
                     <li><a href="#">[[#{navbar.contacto}]]</a></li>
+                    <li><a href="#">[[#{plantilla.carrito}]]</a></li>
                 </ul>
 
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ajustesModal">
@@ -52,7 +53,7 @@
                     [[#{plantilla.descripcion3.3}]]<br />
                 </h2>
                 <a th:href="@{/producto/listado}"><button>[[#{plantilla.explorarProductos}]]</button></a>
-                <a th:href="@{/producto/listado}"><button>[[#{plantilla.explorarCategorias}]]</button></a>
+                <a th:href="@{/categoria/listado}"><button>[[#{plantilla.explorarCategorias}]]</button></a>
             </div>
             <div class="dog-image"></div>
         </section>
@@ -68,7 +69,6 @@
                         <div class="modal-body">
                             <ul class="list-group">
                                 <li class="list-group-item"><a href="/perfil" class="btn btn-secondary w-100 text-white">[[#{plantilla.perfil}]]</a></li>
-                                <li class="list-group-item"><a href="/carrito" class="btn btn-secondary w-100 text-white">[[#{plantilla.carrito}]]</a></li>
                                 <li class="list-group-item">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">

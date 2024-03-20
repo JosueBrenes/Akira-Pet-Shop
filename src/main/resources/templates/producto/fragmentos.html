@@ -91,25 +91,26 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-4" th:each="producto : ${productos}">
-                        <div class="card mb-3 bg-secondary">
-                            <div class="card-body text-white">
-                                <h5 class="card-title">[[${producto.descripcion}]]</h5>
-                                <p class="card-text">Detalle: [[${producto.detalle}]]</p>
-                                <p class="card-text">Precio: [[${producto.precio}]]</p>
-                                <p class="card-text">Existencias: [[${producto.existencias}]]</p>
-                                <div class="text-center mt-3">
-                                    <div class="btn-group" role="group">
-                                        <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
-                                           class="btn btn-danger mr-2">
-                                            <i class="fas fa-trash"></i> Eliminar
-                                        </a>
-                                        <a th:href="@{/producto/modificar/}+${producto.idProducto}"
-                                           class="btn btn-primary ml-2">
-                                            <i class="fas fa-pencil"></i> Actualizar
-                                        </a>
+                        <div class="card mb-3">
+                            <img class="card-img-top" th:src="@{${producto.rutaImagen}}" alt="Product Image">
+                                <div class="card-body">
+                                    <h5 class="card-title">[[${producto.descripcion}]]</h5>
+                                    <p class="card-text">Detalle: [[${producto.detalle}]]</p>
+                                    <p class="card-text">Precio: [[${producto.precio}]]</p>
+                                    <p class="card-text">Existencias: [[${producto.existencias}]]</p>
+                                    <div class="text-center mt-3">
+                                        <div class="btn-group" role="group">
+                                            <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
+                                               class="btn btn-danger mr-2">
+                                                <i class="fas fa-trash"></i> Eliminar
+                                            </a>
+                                            <a th:href="@{/producto/modificar/}+${producto.idProducto}"
+                                               class="btn btn-primary ml-2">
+                                                <i class="fas fa-pencil"></i> Actualizar
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 </div>

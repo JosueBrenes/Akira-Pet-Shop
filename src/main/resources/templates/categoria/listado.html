@@ -2,13 +2,17 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}" >
-        <title>Listado</title>
+        <title>[[#{aplicacion.titulo}]]</title>
         <meta charset="UTF-8" />
     </head>
     <body>
         <header th:replace="~{layout/plantilla2 :: header}" />
 
-        <section th:replace="~{producto/fragmentos :: editarProducto}" />
+        <section th:replace="~{categoria/fragmentos :: botonesAgregar}" />
+        <section th:replace="~{categoria/fragmentos :: agregarCategoria}" />
+        <section th:replace="~{categoria/fragmentos :: listadoCategorias}" />
+
+
 
         <footer th:replace="~{layout/plantilla :: footer}" />
     </body>
