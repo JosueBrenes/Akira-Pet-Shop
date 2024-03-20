@@ -55,7 +55,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
+                                <button class="btn btn-primary" type="submit">[[#{accion.guardar}]]</button>
                             </div>
                         </form>
                     </div>
@@ -82,11 +82,11 @@
                                                     <div class="btn-group" role="group">
                                                         <a th:href="@{/categoria/eliminar/}+${categoria.idCategoria}"
                                                            class="btn btn-danger">
-                                                            <i class="fas fa-trash"></i> Eliminar
+                                                            <i class="fas fa-trash"></i>[[#{accion.eliminar}]]
                                                         </a>
                                                         <a th:href="@{/categoria/modificar/}+${categoria.idCategoria}"
                                                            class="btn btn-primary">
-                                                            <i class="fas fa-pencil"></i> Actualizar
+                                                            <i class="fas fa-pencil"></i>[[#{accion.actualizar}]]
                                                         </a>
                                                     </div>
                                                 </div>
@@ -103,7 +103,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-9">
                         <div class="text-center mt-4">
-                            <p>Total de Categorías: <span th:text="${totalCategorias}"></span></p>
+                            <p>[[#{categoria.total}]]: <span th:text="${totalCategorias}"></span></p>
                         </div>
                     </div>
                 </div>
