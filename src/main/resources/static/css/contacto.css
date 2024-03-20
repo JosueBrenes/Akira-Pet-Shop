@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.contacto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.mapa {
+    margin-bottom: 20px;
+    width: 90%;
+    max-width: 800px; 
+    height: 60vh; 
+    overflow: hidden; 
+    border-radius: 10px;
+}
+
+.mapa iframe {
+    width: 100%; 
+    height: 100%; 
+    border: none;
+}
+
+.botones-contacto {
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 20px;
+}
+
+.boton {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.whatsapp {
+    background-color: #25D366;
+}
+
+.facebook {
+    background-color: #3b5998;
+}
+
+.instagram {
+    background-color: #e1306c;
+}

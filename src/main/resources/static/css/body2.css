@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    font-family: "Museo Sans Rounded", sans-serif;
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/proyecto-c0a8f.appspot.com/o/fondo.png?alt=media");
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
