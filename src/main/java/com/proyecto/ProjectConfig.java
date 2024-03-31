@@ -68,7 +68,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/usuario/modificar/**", "/usuario/eliminar/**",
                         "/reportes/**", "/admin/listado", "/categoria/listado/**", "/producto/listado/**"
                 ).hasRole("ADMIN")
-                .requestMatchers("/facturar/carrito")
+                .requestMatchers("/facturar/carrito", "/perfil/**")
                 .hasRole("USER")
                 )
                 .formLogin((form) -> form
@@ -77,18 +77,15 @@ public class ProjectConfig implements WebMvcConfigurer {
         return http.build();
     }
 
-    @Bean
-    public UserDetailsService users() {
-        UserDetails admin = User.builder()
-                .username("juan")
-                .password("{noop}123")
-                .roles("USER", "VENDEDOR", "ADMIN")
-                .build();
-        UserDetails user = User.builder()
-                .username("pedro")
-                .password("{noop}789")
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(user, admin);
+    @Autowired
+    private UserDetailsService userDetailsService;
+
+    @Autowired
+    public void configurerGlobal(AuthenticationManagerBuilder builder)
+            throws Exception {
+        builder.userDetailsService(userDetailsService)
+                .passwordEncoder(
+                        new BCryptPasswordEncoder());
     }
+    
 }
