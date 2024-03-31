@@ -8,4 +8,5 @@ public interface UsuarioDetailsService {
     public UserDetails loadUserByUsername(String username)
             throws
             UsernameNotFoundException;
+    
 }

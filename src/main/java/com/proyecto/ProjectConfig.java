@@ -87,4 +87,5 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .passwordEncoder(
                         new BCryptPasswordEncoder());
     }
+    
 }

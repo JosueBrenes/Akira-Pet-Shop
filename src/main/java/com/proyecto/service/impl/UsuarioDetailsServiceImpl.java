@@ -33,26 +33,20 @@ public class UsuarioDetailsServiceImpl
     public UserDetails loadUserByUsername(String username)
             throws UsernameNotFoundException {
 
-        //Se busca el usuario que tiene el username
         Usuario usuario = usuarioDao.findByUsername(username);
 
-        //Se debe validar si se encontró...
         if (usuario == null) {
-            //El usuario NO se encontró
             throw new UsernameNotFoundException(username);
 
         }
 
-        //Si estamos acá... si se encontró el usuario...
         session.removeAttribute("usuarioImagen");
         session.setAttribute("usuarioImagen", usuario.getRutaImagen());
 
-        //Se deben de crear los roles de seguridad
         var roles = new ArrayList<GrantedAuthority>();
         for (Rol r : usuario.getRoles()) {
             roles.add(new SimpleGrantedAuthority(r.getNombre()));
         }
-        //Acá ya tenemos toda la info del usuario...
         return new User(usuario.getUsername(),
                 usuario.getPassword(),
                 roles);
