@@ -68,7 +68,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/usuario/modificar/**", "/usuario/eliminar/**",
                         "/reportes/**", "/admin/listado", "/categoria/listado/**", "/producto/listado/**"
                 ).hasRole("ADMIN")
-                .requestMatchers("/facturar/carrito", "/perfil/**")
+                .requestMatchers("/facturar/carrito", "/usuario/**", "/carrito/**")
                 .hasRole("USER")
                 )
                 .formLogin((form) -> form
