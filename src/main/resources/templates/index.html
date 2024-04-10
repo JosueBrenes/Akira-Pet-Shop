@@ -3,9 +3,10 @@
     <head th:replace="~{layout/plantilla :: head}" />
     <link th:href="@{/css/body.css}" rel="stylesheet" />
 </head>
-<body>
-    <header th:replace="~{layout/plantilla :: header}" />
-    <section th:replace="~{layout/plantilla :: main}" />
-    <section th:replace="~{layout/plantilla :: ajustes}" />
-</body>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}" />
+        <section th:replace="~{layout/plantilla :: main}" />
+        <section th:replace="~{carrito/fragmentos :: listadoProductos}"/>
+        <section th:replace="~{layout/plantilla :: ajustes}" />
+    </body>
 </html>
