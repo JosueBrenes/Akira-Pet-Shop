@@ -76,3 +76,15 @@ create table veterinaria.rol (
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+INSERT INTO veterinaria.usuario (id_usuario, username,password,nombre, apellidos, correo, telefono,ruta_imagen,activo) VALUES 
+(1,'Sussy','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','Sussy', 'Arias Esquivel',    'sarias30840@ufide.ac.cr',    '4556-8978', '',true),
+(2,'Josué','$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi','Josué',  'Brenes Hernández', 'jbrenes90453@ufide.ac.cr', '5456-8789','',true),
+(3,'Monse','$2a$10$koGR7eS22Pv5KdaVJKDcge04ZB53iMiw76.UjHPY.XyVYlYqXnPbO','Monserrat', 'Rojas Alpizar',     'mrojas20617@ufide.ac.cr',      '7898-8936','',true);
+
+insert into veterinaria.rol (id_rol, nombre, id_usuario) values
+ (1,'ROLE_ADMIN',1), 
+ (2,'ROLE_USER',1),
+ (3,'ROLE_ADMIN',2), 
+ (4,'ROLE_USER',2),
+ (5,'ROLE_USER',3);
