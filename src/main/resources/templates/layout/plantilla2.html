@@ -45,6 +45,16 @@
                 <div class="logo">
                     <a href="/admin/listado" style="color: #fff; font-weight: bold; text-decoration: none;">[[#{aplicacion.titulo}]]</a>
                 </div>
+                <ul class="navbar-nav" sec:authorize="isAuthenticated()">
+                    <li class="nav-item text-white my-auto">
+                        <form method="post"
+                              th:action="@{/logout}">
+                            <button class="btn btn-dark">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
             </nav>
         </header>
     </body>

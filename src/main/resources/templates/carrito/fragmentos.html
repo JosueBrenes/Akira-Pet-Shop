@@ -6,33 +6,53 @@
         <title>[[#{aplicacion.titulo}]]</title>
     </head>
     <body>
-        <section th:fragment="listadoProductos" id="productos">
+        <section th:fragment="listadoProductos" id="productos" class="py-5">
             <div class="container">
-                <div class="row row-cols-2">
-                    <h2 class="inline" style="margin-top: 20rem">[[#{index.nuestrosProductos}]]</h2>
-                    <div id="resultsBlock"></div>
-                </div>
-                <div class="row row-cols-3" th:if="${productos != null and !productos.empty}">
-                    <div class="card" th:each="producto : ${productos}">
-                        <div class="card-body">
-                            <h5 class="card-title">[[${producto.descripcion}]]</h5>
-                            <figure>
-                                <img th:src="@{${producto.rutaImagen}}" height="200"/>
-                                <figcaption>[[${producto.precio}+' ('+${producto.existencias}+')']]</figcaption>
-                            </figure>
-                            <form>
-                                <input type="hidden" name="texto" th:value="${producto.idProducto}"/>
-                                <input type="hidden" name="texto" th:value="${producto.existencias}"/>
-                                <button class="btn btn-ligth" id="addCar" name="addCar" onclick="addCard(this.form)" type="button"><i class="fas fa-cart-plus"></i></button>
-                            </form>
-                            <p class="card-text">[[${producto.detalle}]]</p>
+                <h2 th:text="#{index.nuestrosProductos}" class="text-center mb-5"></h2>
+                <div id="resultsBlock" class="row"></div>
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            <div class="col mb-4" th:each="producto : ${productos}">
+                                <div class="card h-100 border-0 shadow">
+                                    <img th:src="@{${producto.rutaImagen}}" class="card-img-top" alt="Producto">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-3" th:text="${producto.descripcion}"></h5>
+                                            <p class="card-text" th:text="${producto.detalle}"></p>
+                                        </div>
+                                        <div class="card-footer d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <span class="fw-bold" th:text="${producto.precio + ' (' + producto.existencias + ')' }"></span>
+                                            </div>
+                                            <form>
+                                                <input type="hidden" name="idProducto" th:value="${producto.idProducto}"/>
+                                                <input type="hidden" name="existencias" th:value="${producto.existencias}"/>
+                                                <button class="btn btn-primary btn-sm" onclick="addCard(this.form)" type="button">
+                                                    <i class="fas fa-cart-plus me-2"></i>
+                                                    Agregar al Carrito
+                                                </button>
+                                            </form>
+                                        </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div th:if="${productos == null or productos.empty}">[[#{carrito.no_mostrar}]]</div>
+                <div th:if="${productos == null or productos.empty}" class="text-center mt-5">[[#{carrito.no_mostrar}]]</div>
             </div>
         </section>
-
+        
+        <div th:fragment="verCarrito" th:unless="${#lists.isEmpty(listaItems)}">            
+            <form action="/carrito/listado">
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+                    <i class="fas fa-cart-plus"></i>
+                    [[#{carrito.verCarrito}]] [[${carritoTotal}]]
+                </button>
+            </form>
+        </div> 
+                
         <section th:fragment="listadoCarrito" id="items">
             <div class="container">
                 <div class="row">

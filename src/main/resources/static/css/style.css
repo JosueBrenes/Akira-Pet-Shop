@@ -21,6 +21,19 @@
     z-index: 9999;
 }
 
+.navbar2 {
+    background-color: #fd6052;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2vh 4vw;
+    font-size: 3vh;
+    position: relative;
+    z-index: 9999;
+    margin-top: 23rem;
+}
+
 .logo span {
     font-weight: bold;
 }
@@ -31,6 +44,15 @@
     padding: 0;
     margin-left: 55vw;
     z-index: 9999;
+}
+
+.nav-links2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 75vw !important;
+    z-index: 9999;
+    
 }
 
 .nav-links li {
