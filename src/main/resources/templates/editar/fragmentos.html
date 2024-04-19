@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet" />
+        <link th:href="@{/webjars/font-awesome/css/all.min.css}" rel="stylesheet" />
+        <link th:href="@{/css/style.css}" rel="stylesheet" />
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>       
+        <script th:src="@{/js/rutinas.js}"></script>
+        <title>[[#{aplicacion.titulo}]]</title>
+    </head>
+    <body>
+        <section th:fragment="perfilUsuario" class="perfilUsuario">
+            <div class="container mt-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">[[#{informacion.perfil}]]</h5>
+                                <form th:action="@{/editar/listado}" method="post" th:object="${usuario}">
+                                    <div class="mb-3">
+                                        <label for="username" class="form-label">[[#{nombre.usuario}]]</label>
+                                        <input type="text" class="form-control" id="username" th:field="${usuario.username}" readonly="readonly">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="nombre" class="form-label">[[#{nombre.perfil}]]</label>
+                                        <input type="text" class="form-control" id="nombre" th:field="${usuario.nombre}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="apellidos" class="form-label">[[#{apellido.perfil}]]</label>
+                                        <input type="text" class="form-control" id="apellidos" th:field="${usuario.apellidos}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="correo" class="form-label">[[#{correo.perfil}]]</label>
+                                        <input type="email" class="form-control" id="correo" th:field="${usuario.correo}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="telefono" class="form-label">[[#{telefono.perfil}]]</label>
+                                        <input type="text" class="form-control" id="telefono" th:field="${usuario.telefono}">
+                                    </div>
+                                    <button type="submit" name="guardarPerfil" class="btn btn-primary">[[#{guardar.perfil}]]</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
